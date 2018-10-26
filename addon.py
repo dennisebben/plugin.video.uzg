@@ -20,9 +20,13 @@ plugin = Plugin(PLUGIN_NAME, PLUGIN_ID, __file__)
 
 uzg = resources.lib.uzg.Uzg()
 subtitle = plugin.get_setting( "subtitle", bool )
+alwaysrefreshindex = plugin.get_setting("alwaysrefreshindex", bool)
 
 @plugin.route('/')
 def index():
+    if (alwaysrefreshindex) :
+        uzg.reset_overzicht()
+        
     ##main, alle shows
     items = [{
         'path': plugin.url_for('show_afleveringen', nebo_id=item['nebo_id']),

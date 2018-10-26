@@ -91,6 +91,10 @@ class Uzg:
             json_data = json.loads(data)
             url_play = json_data['url']
             return url_play
+
+        def reset_overzicht(self):
+            self.overzichtcache = 'leeg'
+            return self.overzichtcache
             
         def get_overzicht(self):
             self.items = 'leeg' ##items weer leeg maken
